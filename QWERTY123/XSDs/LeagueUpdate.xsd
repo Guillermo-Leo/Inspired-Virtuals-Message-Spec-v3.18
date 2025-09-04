@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LeagueUpdateSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+	
+	<!-- The <Team> element -->
+	<xs:complexType name="TeamLeagueInfoType">
+		<xs:attribute name="Position" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="15"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="PositionVariation" use="required">
+		  <xs:simpleType>
+			<xs:restriction base="xs:string"> 
+				<xs:enumeration value="EQUAL" />
+				<xs:enumeration value="UP"/>
+				<xs:enumeration value="DOWN"/>
+			</xs:restriction>
+		  </xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="TeamName" type="xs:string" use="required" />
+		<xs:attribute name="MatchesPlayed" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="30"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="MatchesWon" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="30"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="MatchesDrawn" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="30"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="MatchesLost" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="30"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="GoalsScored" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="240"/> <!-- 30 Matches * 8 Max Goals in MDU -->
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="GoalsAgainst" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="240"/> <!-- 30 Matches * 8 Max Goals in MDU -->
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Points" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="90"/>
+	  				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Trend" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[VPN-]{6}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<!-- The <event> element -->
+	<xs:complexType name="TeamLeagueInfoTableType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<!-- <Team> - Occurs 8 or 16 times -->
+				<xs:sequence minOccurs="1" maxOccurs="2">	
+					<xs:element name="Team" type="TeamLeagueInfoType" minOccurs="7" maxOccurs="8"/>
+				</xs:sequence>
+				<xs:attribute name="MatchdayID" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="LeagueName" type="xs:string" use="required" />
+				<xs:attribute name="LeagueDay" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="PoolName" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

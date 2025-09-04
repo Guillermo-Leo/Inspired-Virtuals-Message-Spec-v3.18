@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TennisEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="TennisEventPlayer">
+		<xs:attribute name="Num" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="2"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Country" type="xs:string" use="required"/>
+		<xs:attribute name="ShirtId" type="xs:nonNegativeInteger" use="required"/>
+		<xs:attribute name="Serves" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="BoardPriceTennisEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardTennisEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardTennisEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">
+				<xs:sequence>
+					<xs:element name="player" type="TennisEventPlayer" minOccurs ="2" maxOccurs="2"/>	
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="3"/>
+				</xs:sequence>
+				<xs:attribute name="MeetingName" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="TennisEventResult">
+		<xs:attribute name="Result" type="xs:string" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="ResultTennisEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<xs:sequence>	
+					<xs:element name="Result" type="TennisEventResult" minOccurs="0" maxOccurs="1" />
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="3"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GeneralSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:complexType name="GeneralMessage">
+		<xs:attribute name="MessageType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string"> 
+					<xs:enumeration value="EventCard" />
+					<xs:enumeration value="DLLLoad"/>
+					<xs:enumeration value="Result"/>
+					<xs:enumeration value="PostRaceShow"/>
+					<xs:enumeration value="Void"/>
+					<xs:enumeration value="GoingDown"/>
+					<xs:enumeration value="GoingBehind"/>
+					<xs:enumeration value="AtThePost"/>
+					<xs:enumeration value="NoMoreBets"/>
+					<xs:enumeration value="Off"/>
+					<xs:enumeration value="BoardPrice"/>
+					<xs:enumeration value="MorningBefore"/>
+					<xs:enumeration value="PriceBatch"/>
+					<xs:enumeration value="OpeningShow"/>
+					<xs:enumeration value="PreviousEvents"/>
+					<xs:enumeration value="UpcomingEvents"/>
+					<xs:enumeration value="ID_Request"/>
+					<xs:enumeration value="RNG_Request"/>
+					<xs:enumeration value="HistoryUpdate"/>
+					<xs:enumeration value="LeagueUpdate"/>
+					<xs:enumeration value="LoadVC"/>
+					<xs:enumeration value="ResultVC"/>
+					<xs:enumeration value="NECD"/>
+					<xs:enumeration value="GoalTimings"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="MessageDateTime" type="xs:dateTime" />
+		<xs:attribute name="MessageFormatVersion" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal"> 
+					<xs:enumeration value="1.0"/>
+					<xs:enumeration value="2.0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ControllerId" type="xs:nonNegativeInteger" />
+		<xs:attribute name="TransactionId" type="xs:nonNegativeInteger" />	
+	</xs:complexType>
+
+	<xs:simpleType name="PriceType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(([0-9])*[\+\-\./]([0-9])+([,]?))+"/>	
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="OutcomeType">
+		<xs:attribute name="Num" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="Outcome" type="xs:string" use="required" />
+		<xs:attribute name="Price" type="PriceType" use="required"/>
+		<xs:attribute name="RTP" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal"> 
+					<xs:maxInclusive value="100.00"/>
+					<xs:minExclusive value="0.00"/>
+					<xs:fractionDigits value="2"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ResultSelectionType">
+		<xs:attribute name="Num" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="Result" type="xs:string" use="required" />
+		<xs:attribute name="Price" type="PriceType" use="optional"/>
+	</xs:complexType>
+	
+	
+</xs:schema>

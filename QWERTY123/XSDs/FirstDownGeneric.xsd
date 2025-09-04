@@ -1,0 +1,38 @@
+<xs:schema id="FirstdownEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="BoardPriceFirstdownEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardFirstdownEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EventCardFirstdownEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">	  
+				<xs:sequence>					
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>				
+				</xs:sequence>
+				<xs:attribute name="MeetingName" type="xs:string" use="required" /> 	  
+				<xs:attribute name="OffenseTeam" type="xs:string" use="required" />
+				<xs:attribute name="DefenseTeam" type="xs:string" use="required" />
+				<xs:attribute name="HomeTeam" type="xs:string" use="required" />
+				<xs:attribute name="AwayTeam" type="xs:string" use="required" />
+				<xs:attribute name="StartLine" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="Details" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultFirstdownEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">	  
+				<xs:sequence> 	 
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

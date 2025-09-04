@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RaceEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="BoardPriceRaceEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardRaceEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="MultiplierTableSection">
+		<xs:attribute name="Value" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PrizeTablePrice">
+		<xs:attribute name="Price" type="xs:nonNegativeInteger" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="RaceMultiplierTable">
+		<xs:sequence>
+			<xs:element name="Selection" type="MultiplierTableSection" minOccurs="0" maxOccurs="8"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RacePrizeTable">
+		<xs:sequence>
+			<xs:element name="TCWinPrice" type="PrizeTablePrice" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ComboTCWinPrice" type="PrizeTablePrice" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FCWinPrice" type="PrizeTablePrice" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ComboFCWinPrice" type="PrizeTablePrice" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FirstPlacePrice" type="PrizeTablePrice" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardRaceEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType"> 
+				<xs:sequence>
+					<xs:element name="prizeTable" type="RacePrizeTable" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="Multiplier" type="RaceMultiplierTable" minOccurs="0" maxOccurs="1"/>	
+					<xs:element name="racer" type="EventCardRaceEventRacer" minOccurs="4" maxOccurs="40"/>
+					<xs:element name="Market" type="EventCardRaceMarket" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>				
+				<xs:attribute name="CourseName" type="xs:string" use="required" />	
+				<xs:attribute name="Racers" use="required">
+					<xs:simpleType>
+						<xs:union memberTypes="StandardNumRacer NonStandardNumRacer" />
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="SilkSet" type="xs:string" use="optional" />	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="StandardNumRacer">
+	  <xs:restriction base="xs:integer">
+		 <xs:minInclusive value="6"/>
+		 <xs:maxInclusive value="22"/>
+	  </xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NonStandardNumRacer">
+	  <xs:restriction base="xs:integer">
+		 <xs:enumeration value="4"/>
+		 <xs:enumeration value="40"/>
+	  </xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="EventCardRaceEventRacer">
+		<xs:attribute name="Num" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="40"/>
+					</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Fav" type="xs:string" use="required"/>
+		<xs:attribute name="RacerTextureID" type="xs:nonNegativeInteger" use="required"/>
+		<xs:attribute name="AdditionalName" type="xs:string" use="required"/>
+		<xs:attribute name="AdditionalTextureID" type="xs:nonNegativeInteger" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="RaceOutcomeType">
+		<xs:complexContent>
+			<xs:extension base="OutcomeType">
+				<xs:attribute name="PlacePrice" type="PriceType" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EventCardRaceMarket">
+		<xs:complexContent>
+			<xs:extension base="EventCardEventMarket">
+				<xs:sequence>
+					 <xs:element name="Selection" type="RaceOutcomeType" minOccurs="0" maxOccurs="unbounded"/>
+					 <xs:element name="PriceList" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					 <xs:element name="RTPList" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+				<xs:attribute name="Places" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="Terms" type="xs:string" use="optional" />
+				<xs:attribute name="Margin" type="MarginType" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- multiple results allowed for some markets -->
+	<xs:simpleType name="RaceResultType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([1-9][0-9]*[,|]?)+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="RaceMarketResult">
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+		<xs:attribute name="Price" type="PriceType" use="optional"/>
+		<xs:attribute name="Result" type="RaceResultType" use="required" />
+		<!-- TODO add optional extras to cover Each Way market -->
+	</xs:complexType>
+	
+	<xs:complexType name="ResultRaceEventRacer">
+		<xs:attribute name="Num" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="40"/>
+					</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Position" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="40"/>
+					</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ResultRaceEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">    
+				<xs:sequence>
+					<xs:element name="racer" type="ResultRaceEventRacer" minOccurs="4" maxOccurs="40"/>
+					<xs:element name="Market" type="RaceMarketResult" maxOccurs="unbounded"/>
+				</xs:sequence> 
+				<xs:attribute name="Racers" use="required">
+					<xs:simpleType>
+						<xs:union memberTypes="StandardNumRacer NonStandardNumRacer" />
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Multiplier" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

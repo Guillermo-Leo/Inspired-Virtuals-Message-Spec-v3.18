@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema id="CounterStrikeSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:include schemaLocation="GeneralEvent.xsd"/>
+	
+	<xs:complexType name="CounterStrikeResultBase">
+		<xs:attribute name="Winner" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Counter-Terrorists" />
+					<xs:enumeration value="Terrorists" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="WinType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Bomb Defused" />
+					<xs:enumeration value="Bomb Exploded" />
+					<xs:enumeration value="Counter-Terrorists Win By Elimination" />
+					<xs:enumeration value="Terrorists Win By Elimination" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="TerroristsRemaining" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="5"/>
+				</xs:restriction>
+			</xs:simpleType>
+			</xs:attribute>
+		<xs:attribute name="CounterTerroristsRemaining" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="5"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="FirstKillTime" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Before Line" />
+					<xs:enumeration value="After Line" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="BoardPriceCounterStrikeEventType">
+		<xs:complexContent>
+			<xs:extension base="EventCardCounterStrikeEventType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardCounterStrikeEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">
+				<xs:sequence>
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="Details" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResultCounterStrikeEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<xs:sequence>
+					<xs:element name="Result" type="CounterStrikeResultBase" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

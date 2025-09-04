@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BasketballV2Schema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+  <xs:complexType name="BasketballV2ResultBase">
+    <xs:attribute name="HomePointsFirstQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="HomePointsSecondQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="HomePointsThirdQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="HomePointsFourthQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="AwayPointsFirstQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="AwayPointsSecondQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="AwayPointsThirdQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="AwayPointsFourthQuarter" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="HomePoints" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="AwayPoints" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="BoardPriceBasketballV2EventType">
+	  <xs:complexContent>	
+		  <xs:extension base="EventCardBasketballV2EventType"/>	  
+	  </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="EventCardBasketballV2EventType">
+    <xs:complexContent>
+      <xs:extension base="EventType">
+        <xs:sequence>
+          <xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="MeetingName" type="xs:string" use="required" />
+        <xs:attribute name="HomeTeam" type="xs:string" use="required" />
+        <xs:attribute name="AwayTeam" type="xs:string" use="required" />
+        <xs:attribute name="Details" type="xs:string" use="required" />
+        <xs:attribute name="AwayUsesAlternateKit" type="NumberBool" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ResultBasketballV2EventType">
+    <xs:complexContent>
+      <xs:extension base="GeneralEventType">
+        <xs:sequence>
+          <xs:element name="Result" type="BasketballV2ResultBase" minOccurs="1" maxOccurs="1"/>
+          <xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

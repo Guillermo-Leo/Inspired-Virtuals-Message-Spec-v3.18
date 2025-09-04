@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MatchdayGoalTimingsSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:include schemaLocation="General.xsd" />
+	
+	<!-- Goal element description -->
+	<xs:complexType name="GoalTimingType">
+		<xs:attribute name="EventID" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="HomeGoal" type="NumberBool" use="required" />
+		<xs:attribute name="TimeMs" type="xs:nonNegativeInteger" use="required" />
+		
+		<xs:attribute name="Score" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\d-\d"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		
+	</xs:complexType>
+		
+	<xs:complexType name="GoalTimingsType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">    
+				<xs:sequence>
+					<xs:element name="Goal" type="GoalTimingType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence> 	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

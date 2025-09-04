@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GeneralEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="General.xsd" />
+
+	<xs:simpleType name="BetCodeType">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MarginType">
+		<xs:restriction base="xs:decimal">	
+			<xs:minInclusive value="0.01"/>
+			<xs:maxInclusive value="300.00"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NumberBool">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ResultType">
+		<xs:restriction base="xs:nonNegativeInteger"/>	
+	</xs:simpleType>
+
+	<xs:complexType name="EventCardEventMarket">
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+		<xs:attribute name="Margin" type="MarginType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="EventCardEventMarketSelection">
+		<xs:complexContent>
+			<xs:extension base="EventCardEventMarket">
+				<xs:sequence>
+					<xs:element name="Selection" type="OutcomeType" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MarketResult">
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+		<xs:attribute name="Price" type="PriceType" use="required"/>
+		<xs:attribute name="Result" type="ResultType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="EventCardEventPartialMarket">
+		<xs:sequence>
+			<xs:element name="Selection" type="OutcomeType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+		<xs:attribute name="Margin" type="MarginType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="PartialMarketResult">
+		<xs:sequence>
+			<xs:element name="Selection" type="ResultSelectionType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="GeneralEventType">
+		<xs:attribute name="EventId" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="EventGUID" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="EventType" use="required" >
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="EventTime" type="xs:dateTime" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="EventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<xs:attribute name="OddsType" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="decimal" />
+							<xs:enumeration value="fractional" />
+							<xs:enumeration value="American" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+  
+</xs:schema>

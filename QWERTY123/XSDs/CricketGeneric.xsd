@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CricketEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+	
+		<xs:complexType name="BoardPriceCricketEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardCricketEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EventCardCricketEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">	  
+				<xs:sequence>				 
+					<xs:element name="Market" type="EventCardEventMarketSelection" maxOccurs="unbounded"/>				 
+				</xs:sequence>		  
+				<xs:attribute name="Team1" type="xs:string" use="required" /> 
+				<xs:attribute name="Team1ShortName" type="xs:string" use="required" /> 
+				<xs:attribute name="Team2" type="xs:string" use="required" /> 
+				<xs:attribute name="Team2ShortName" type="xs:string" use="required" /> 
+				<xs:attribute name="MeetingName" type="xs:string" use="required" />				
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultCricketEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">	  
+				<xs:sequence>			  
+					<xs:element name="Market" type="MarketResult" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType> 
+</xs:schema>

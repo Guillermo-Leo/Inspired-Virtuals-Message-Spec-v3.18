@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MarblesEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+	
+	<xs:complexType name="BoardPriceMarblesEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardMarblesEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResultMarblesEventMarket">
+		<xs:attribute name="Type" type="xs:string" use="required"/>
+		<xs:attribute name="BetCode" type="xs:string" use="required"/>
+		<xs:attribute name="Result" type="xs:string" use="required"/>
+		<xs:attribute name="Price" type="PriceType" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="EventCardMarblesEventRacer">
+		<xs:attribute name="Num" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardMarblesEventCatchzone">
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardMarblesEventMarket">
+		<xs:sequence>
+			 <xs:element name="Selection" type="OutcomeType" minOccurs="0" maxOccurs="unbounded"/>
+			 <xs:element name="PriceList" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="xs:string" use="required"/>
+		<xs:attribute name="Margin" type="xs:decimal" use="required"/>
+		<xs:attribute name="BetCode" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ResultMarblesEventRacer">
+		<xs:attribute name="Num" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Position" type="xs:nonNegativeInteger" use="required"/>
+	</xs:complexType>
+		
+	<xs:simpleType name="MarblesStandardNumRacer">
+	  <xs:restriction base="xs:integer">
+		 <xs:minInclusive value="10"/>
+		 <xs:maxInclusive value="10"/>
+	  </xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MarblesNonStandardNumRacer">
+	  <xs:restriction base="xs:integer">
+		 <xs:enumeration value="10"/>
+	  </xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="EventCardMarblesEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">	  
+				<xs:sequence>					 
+					<xs:element name="racer" type="EventCardMarblesEventRacer" minOccurs="10" maxOccurs="10"/>
+					<xs:element name="Market" type="EventCardMarblesEventMarket" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="CourseName" type="xs:string" use="required" />
+				<xs:attribute name="MultiplierEnabled" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="Yes" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Racers" use="required">
+					<xs:simpleType>
+						<xs:union memberTypes="MarblesStandardNumRacer MarblesNonStandardNumRacer" />
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultMarblesEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">	  
+				<xs:sequence>					 
+					 <xs:element name="racer" type="ResultMarblesEventRacer" minOccurs="10" maxOccurs="10"/>
+					 <xs:element name="Market" type="ResultMarblesEventMarket" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="MultiplierEnabled" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="Yes" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Multiplier" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="Racers" use="required">
+					<xs:simpleType>
+						<xs:union memberTypes="MarblesStandardNumRacer MarblesNonStandardNumRacer" />
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

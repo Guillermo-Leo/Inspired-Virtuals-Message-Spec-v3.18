@@ -1,0 +1,3 @@
+<message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageRetryError" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventNackRetryError" Status="NACK" Details="Further information regarding the reason for this response" Action="error" />
+</message>

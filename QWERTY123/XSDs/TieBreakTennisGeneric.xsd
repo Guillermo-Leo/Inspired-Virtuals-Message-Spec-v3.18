@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TieBreakTennisEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+ <xs:include schemaLocation="GeneralEvent.xsd" />
+
+  <xs:complexType name="TieBreakTennisEventPlayer">
+		<xs:complexContent>
+			<xs:extension base="TennisEventPlayer">
+				<xs:attribute name="Tex" type="xs:nonNegativeInteger" use="required"/>	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="BoardPriceTieBreakTennisEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardTieBreakTennisEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardTieBreakTennisEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">
+				<xs:sequence>
+					<xs:element name="player" type="TieBreakTennisEventPlayer" minOccurs ="2" maxOccurs="2"/>	
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="5"/>
+				</xs:sequence>
+				<xs:attribute name="Details" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="TieBreakTennisEventResult">
+		<xs:attribute name="Result" type="xs:string" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="ResultTieBreakTennisEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<xs:sequence>	
+					<xs:element name="Result" type="TennisEventResult" minOccurs="0" maxOccurs="1" />
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="5"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+  
+</xs:schema>

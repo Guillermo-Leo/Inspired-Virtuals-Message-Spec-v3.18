@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FootballEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="BoardPriceFootballEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardFootballEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardFootballEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType"> 
+				<xs:sequence>
+					<xs:element name="Market" type="EventCardFootballMarketSelection" maxOccurs="unbounded"/>
+				</xs:sequence>				
+				<xs:attribute name="EventName" type="xs:string" use="required" />
+				<xs:attribute name="Team1" type="xs:string" use="required" />
+				<xs:attribute name="Team2" type="xs:string" use="required" />
+				<xs:attribute name="Team1Acronym" type="xs:string" use="optional" />
+				<xs:attribute name="Team2Acronym" type="xs:string" use="optional" />
+				<xs:attribute name="Stadium" type="xs:string" use="required"/>
+				<xs:attribute name="PoolName" type="xs:string" use="optional"/>
+				<xs:attribute name="AwayTeamUsesAwayKit" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="1"/>
+						</xs:restriction>			
+					</xs:simpleType>
+				</xs:attribute>			
+				<xs:attribute name="LeagueName" type="xs:string" use="optional" />
+				<xs:attribute name="LeagueDay" use="optional" >
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="1"/>
+							<xs:maxInclusive value="30"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="MatchdayID" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="MatchdayIndex" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="IsPartOfLeague" use="optional" >
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EventCardFootballMarketSelection">
+		<xs:complexContent>
+			<xs:extension base="EventCardEventMarket">
+				<xs:sequence>
+					<xs:element name="Selection" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:complexContent>
+								<!-- only used in asian handicap market -->
+								<xs:extension base="OutcomeType">
+									<xs:attribute name="Handicap" type="xs:string"/>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- multiple results allowed for double chance -->
+	<xs:simpleType name="FootballResultType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([1-9][0-9]*,?)+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FootballAsianHandicapOutcome">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="L"/>
+			<xs:enumeration value="WP"/>
+			<xs:enumeration value="LP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="FootballMarketResult">
+		<xs:attribute name="Type" type="xs:string" use="required" />
+		<xs:attribute name="BetCode" type="BetCodeType" use="required" />
+		<xs:attribute name="Price" type="PriceType" use="optional"/>
+		<xs:attribute name="Result" type="FootballResultType" use="optional" />
+		<!-- instead of price and result asian handicap uses the below -->
+		<xs:attribute name="OutcomeHome" type="FootballAsianHandicapOutcome" use="optional"/>
+		<xs:attribute name="OutcomeAway" type="FootballAsianHandicapOutcome" use="optional"/>
+		<xs:attribute name="PayoutHome" type="PriceType" use="optional"/>
+		<xs:attribute name="PayoutAway" type="PriceType" use="optional"/>
+	</xs:complexType>
+	
+	<xs:complexType name="FootballEventResult">
+		<xs:attribute name="Result" type="xs:string" use="required" />
+		<xs:attribute name="HalfTimeResult" type="xs:string" use="optional" />
+		<xs:attribute name="FirstScorer" type="xs:string" use="optional" />
+	</xs:complexType>
+	
+	<xs:complexType name="ResultFootballEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">    
+				<xs:sequence>
+					<xs:element name="Result" type="FootballEventResult" minOccurs="1" maxOccurs="1" />
+					<xs:element name="Market" type="FootballMarketResult" maxOccurs="unbounded"/>
+				</xs:sequence> 
+				<xs:attribute name="LeagueName" type="xs:string" use="optional" />
+				<xs:attribute name="LeagueDay" use="optional" >
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="1"/>
+							<xs:maxInclusive value="30"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="MatchdayID" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="MatchdayIndex" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="IsPartOfLeague" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>		
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

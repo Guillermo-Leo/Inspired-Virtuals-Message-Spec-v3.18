@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Socccer3EventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="FootballGeneric.xsd" />
+
+	<xs:complexType name="BoardPriceSoccer3EventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardSoccer3EventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardSoccer3EventType">
+		<xs:complexContent>
+			<xs:extension base="EventCardFootballEventType"> 
+				<xs:attribute name="HomeKitId" use="optional" type="xs:nonNegativeInteger"/>
+				<xs:attribute name="AwayKitId" use="optional" type="xs:nonNegativeInteger"/>
+        		<xs:attribute name="Details" use="optional" type="xs:string"/>
+        		<xs:attribute name="MaxClipsInMatch" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="4"/>
+							<xs:maxInclusive value="8"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>		
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResultSoccer3EventType">
+		<xs:complexContent>
+			<xs:extension base="ResultFootballEventType"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

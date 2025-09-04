@@ -1,0 +1,3 @@
+<message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageGeneral" MessageType="EventCard_Response" ControllerId="1" TransactionId="123" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventAckEventCard" Status="ACK" Details="Further information regarding the reason for this response or actions which have been taken at your end" />
+</message>

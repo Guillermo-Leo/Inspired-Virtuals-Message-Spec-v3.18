@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PenaltiesEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="EventCardPenaltiesEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">
+				<xs:sequence>
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>	
+				</xs:sequence>
+				<xs:attribute name="EventName" type="xs:string" use="required" />
+				<xs:attribute name="Team1" type="xs:string" use="required" />
+				<xs:attribute name="Team2" type="xs:string" use="required" />
+				<xs:attribute name="Stadium" type="xs:string" use="required" />
+				<xs:attribute name="Team1Acronym" type="xs:string" use="optional" />
+				<xs:attribute name="Team2Acronym" type="xs:string" use="optional" />
+				<xs:attribute name="AwayTeamUsesAwayKit" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:nonNegativeInteger">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="1"/>
+						</xs:restriction>			
+					</xs:simpleType>
+				</xs:attribute>				
+				<xs:attribute name="Details" type="xs:string" use="optional" />	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultPenaltiesEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType"> 
+				<xs:sequence>
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/> 
+				</xs:sequence>
+				<xs:attribute name="Result" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BoardPricePenaltiesEventType">
+		<xs:complexContent>
+			<xs:extension base="EventCardPenaltiesEventType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

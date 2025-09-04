@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DartsEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+<xs:include schemaLocation="GeneralEvent.xsd" />
+
+<xs:complexType name="BoardPriceDartsEventType">
+	<xs:complexContent>	
+		<xs:extension base="EventCardDartsEventType"/>	  
+	</xs:complexContent>
+</xs:complexType>
+	
+<xs:complexType name="EventCardDartsEventType">
+	<xs:complexContent>
+		<xs:extension base="EventType">	  
+			<xs:sequence>			 
+				<xs:element name="Market" type="EventCardEventMarketSelection" maxOccurs="unbounded"/> 
+			</xs:sequence>	  
+			<xs:attribute name="Player1" type="xs:string" use="required" />
+			<xs:attribute name="Player1Initials" type="xs:string" use="required" />
+			<xs:attribute name="Player2" type="xs:string" use="required" />
+			<xs:attribute name="Player2Initials" type="xs:string" use="required" />
+			<xs:attribute name="MeetingName" type="xs:string" use="required" />
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ResultDartsEventType">
+	<xs:complexContent>
+		<xs:extension base="GeneralEventType">	  
+			<xs:sequence>			 
+				<xs:element name="Market" type="MarketResult" maxOccurs="unbounded"/>				 
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+</xs:schema>

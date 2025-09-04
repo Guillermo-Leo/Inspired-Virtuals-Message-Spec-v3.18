@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IVGCommsSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+	
+	<!-- This is the "head element" within any comms messages sent by the Inspired Controller application. -->
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="GeneralMessage">					
+					<xs:choice>	   
+						<!-- This top-level generic "message" element type contains either:
+							- a list of events (EventCard message) or 
+							- a single event (all other messages) 
+						The XML will contain an xsi type which will specify the subtype of GeneralEventType to be used for the message -->
+						<xs:element name="event" type="GeneralEventType" minOccurs="1" maxOccurs="1" /> 
+						<xs:element name="events">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="event" type="EventType" minOccurs ="0" maxOccurs="unbounded" />
+								</xs:sequence>		
+								<xs:attribute name="NumEvents" type="xs:nonNegativeInteger" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>  		
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

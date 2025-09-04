@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IVGCommsResponseSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	
+	<!-- In order to use this XSD you'll have to add XSIs to your XML to select the type of the "message" and "event" elements 
+	
+	"message" can be:
+				ResponseMessageRetryError	- Only for NACK RETRY and NACK ERROR/SHUTDOWN reponses
+				ResponseMessageGeneral		- All other response messages
+				
+	"event" can be:
+				ResponseEventNackVoid		- Only for NACK VOID reponses
+				ResponseEventNackRetryError	- Only for NACK RETRY and NACK ERROR/SHUTDOWN reponses
+				ResponseEventAckEventCard	- ACK response to EventCard message only
+				ResponseEventAckGeneral		- All other response messages
+	-->
+	
+	<xs:element name="message" type="ResponseMessageBase"/>
+	
+	<xs:complexType name="ResponseMessageBase">
+		<xs:attribute name="MessageDateTime" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="MessageFormatVersion" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal"> 
+					<xs:enumeration value="1.0"/>
+					<xs:enumeration value="2.0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseMessageRetryError">
+		<xs:complexContent>
+			<xs:extension base="ResponseMessageBase">
+				<xs:sequence>
+					<xs:element name="event" type="ResponseEventNackRetryError" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+				<xs:attribute name="MessageType" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="EventCard_Response"/>
+							<xs:enumeration value="Result_Response"/>
+							<xs:enumeration value="Void_Response"/>
+							<xs:enumeration value="NoMoreBets_Response"/>
+							<xs:enumeration value="Off_Response"/>
+							<xs:enumeration value="BoardPrice_Response"/>
+							<xs:enumeration value="LeagueUpdate_Response"/>
+							<xs:enumeration value="NECD_Response"/>
+							<xs:enumeration value="ScoreInit_Response"/>
+							<xs:enumeration value="ScoreUpdate_Response"/>
+							<xs:enumeration value="GoalTimings_Response"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="ControllerId" type="xs:nonNegativeInteger" use="optional"/>
+				<xs:attribute name="TransactionId" type="xs:nonNegativeInteger" use="optional"/>	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseMessageGeneral">
+		<xs:complexContent>
+			<xs:extension base="ResponseMessageBase">
+				<xs:sequence>
+					<xs:element name="event" type="ResponseEventBase" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+				<xs:attribute name="MessageType" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="EventCard_Response"/>
+							<xs:enumeration value="Result_Response"/>
+							<xs:enumeration value="Void_Response"/>
+							<xs:enumeration value="NoMoreBets_Response"/>
+							<xs:enumeration value="Off_Response"/>
+							<xs:enumeration value="BoardPrice_Response"/>
+							<xs:enumeration value="LeagueUpdate_Response"/>
+							<xs:enumeration value="NECD_Response"/>
+							<xs:enumeration value="ScoreInit_Response"/>
+							<xs:enumeration value="ScoreUpdate_Response"/>
+							<xs:enumeration value="GoalTimings_Response"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="ControllerId" type="xs:nonNegativeInteger" />
+				<xs:attribute name="TransactionId" type="xs:nonNegativeInteger" />	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResponseEventBase">
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseEventNackRetryError">
+		<xs:complexContent>
+			<xs:extension base="ResponseEventBase">
+				<xs:attribute name="Status" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="NACK"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Action" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="retry"/>
+							<xs:enumeration value="error"/>
+							<xs:enumeration value="shutdown"/> <!-- functionally identical to "error" but more clearly named -->
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventId" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="EventGUID" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventType" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="EventTime" type="xs:dateTime" use="optional" />
+				<xs:attribute name="Details" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseEventNackVoid">
+		<xs:complexContent>
+			<xs:extension base="ResponseEventBase">
+				<xs:attribute name="Status" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="NACK"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Action" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="void"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventId" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="EventGUID" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventType" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="EventTime" type="xs:dateTime" use="optional" />
+				<xs:attribute name="Details" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseEventAckEventCard">
+		<xs:complexContent>
+			<xs:extension base="ResponseEventBase">
+				<xs:attribute name="Status" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="ACK"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Details" type="xs:string" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ResponseEventAckGeneral">
+		<xs:complexContent>
+			<xs:extension base="ResponseEventBase">
+				<xs:attribute name="Status" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string"> 
+							<xs:enumeration value="ACK"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventId" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="EventGUID" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="EventType" type="xs:nonNegativeInteger" use="optional" />
+				<xs:attribute name="EventTime" type="xs:dateTime" use="optional" />
+				<xs:attribute name="Details" type="xs:string" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

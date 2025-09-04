@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NumbersEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+	<xs:complexType name="NumbersType">
+		<xs:attribute name="num" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="lucky" type="xs:boolean" use="optional" />
+		<xs:attribute name="time" type="xs:string" use="optional" />
+	</xs:complexType>
+	
+	<xs:complexType name="PrizesType">
+		<xs:attribute name="NumPrizes" type="xs:nonNegativeInteger" use="required" />
+		<xs:attribute name="Prizes" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="BoardPriceNumbersEventType">
+		<xs:complexContent>
+			<xs:extension base="EventCardNumbersEventType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardNumbersEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">
+				<xs:sequence>
+					<xs:element name="number_in_draw" type="NumbersType" minOccurs ="0" maxOccurs="unbounded"/>
+					<xs:element name="prizes" type="PrizesType" minOccurs ="0" maxOccurs="1"/>
+				</xs:sequence>
+
+				<xs:attribute name="NNumbersToDraw" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="NNumbersInDraw" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="EventName" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultNumbersEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">
+				<xs:sequence>
+					<xs:element name="number_drawn" type="NumbersType" minOccurs ="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="NNumbersToDraw" type="xs:nonNegativeInteger" use="required" />
+				<xs:attribute name="EventName" type="xs:string" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

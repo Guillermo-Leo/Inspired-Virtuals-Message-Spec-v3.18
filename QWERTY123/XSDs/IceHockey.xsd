@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema id="IceHockeySchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+	
+	<xs:simpleType name="IceHockeyScore">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="IceHockeyResultBase">
+		<xs:attribute name="Home" type="IceHockeyScore" use="required" />
+		<xs:attribute name="Away" type="IceHockeyScore" use="required" />
+		<xs:attribute name="PeriodExacta" type="xs:string" use="required" />
+		<xs:attribute name="FirstGoalScorer" type="xs:string" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="BoardPriceIceHockeyEventType">
+		<xs:complexContent>	
+			<xs:extension base="EventCardIceHockeyEventType"/>	  
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="EventCardIceHockeyEventType">
+		<xs:complexContent>
+			<xs:extension base="EventType">	  
+				<xs:sequence>					
+					<xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>				
+				</xs:sequence>
+				<xs:attribute name="MeetingName" type="xs:string" use="required" /> 	  
+				<xs:attribute name="HomeTeam" type="xs:string" use="required" />
+				<xs:attribute name="AwayTeam" type="xs:string" use="required" />
+				<xs:attribute name="HomeTeamShort" type="xs:string" use="required" />
+				<xs:attribute name="AwayTeamShort" type="xs:string" use="required" />
+				<xs:attribute name="Details" type="xs:string" use="required" />
+				<xs:attribute name="HomeUsesAlternateKit" type="NumberBool" use="required" />
+				<xs:attribute name="AwayUsesAlternateKit" type="NumberBool" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultIceHockeyEventType">
+		<xs:complexContent>
+			<xs:extension base="GeneralEventType">	  
+				<xs:sequence> 	 
+					<xs:element name="Result" type="IceHockeyResultBase" minOccurs="1" maxOccurs="1"/> 
+					<xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/> 
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

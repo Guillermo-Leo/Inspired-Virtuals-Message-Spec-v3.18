@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BaseballSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+	<xs:include schemaLocation="GeneralEvent.xsd" />
+
+  <xs:complexType name="BaseballResultBase">
+    <xs:attribute name="Player1Points" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="Player2Points" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="BoardPriceBaseballEventType">
+	  <xs:complexContent>	
+		  <xs:extension base="EventCardBaseballEventType"/>	  
+	  </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="EventCardBaseballEventType">
+    <xs:complexContent>
+      <xs:extension base="EventType">
+        <xs:sequence>
+          <xs:element name="Market" type="EventCardEventMarketSelection" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="MeetingName" type="xs:string" use="required" />
+        <xs:attribute name="HomeTeam" type="xs:string" use="required" />
+        <xs:attribute name="AwayTeam" type="xs:string" use="required" />
+        <xs:attribute name="HomeTeamShort" type="xs:string" use="required" />
+        <xs:attribute name="AwayTeamShort" type="xs:string" use="required" />
+		<xs:attribute name="HomeUsesAlternateKit" type="xs:string" use="required" />
+        <xs:attribute name="AwayUsesAlternateKit" type="xs:string" use="required" />
+        <xs:attribute name="Details" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ResultBaseballEventType">
+    <xs:complexContent>
+      <xs:extension base="GeneralEventType">
+        <xs:sequence>
+          <xs:element name="Result" type="BaseballResultBase" minOccurs="1" maxOccurs="1"/>
+          <xs:element name="Market" type="MarketResult" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

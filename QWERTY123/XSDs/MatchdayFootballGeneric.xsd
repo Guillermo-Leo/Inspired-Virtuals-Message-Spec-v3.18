@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MatchdayFootballEventSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+<xs:include schemaLocation="GeneralEvent.xsd" />
+
+<xs:complexType name="MatchElement">
+	<xs:attribute name="MatchdayIndex" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="EventID" type="xs:nonNegativeInteger" use="required" />
+</xs:complexType>
+
+<xs:complexType name="MatchesElement">
+	<xs:sequence>
+		 <xs:element name="match" type="MatchElement" minOccurs ="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BoardPriceMatchdayFootballEventType">
+	<xs:complexContent>	
+		<xs:extension base="EventCardMatchdayFootballEventType"/>	  
+	</xs:complexContent>
+</xs:complexType>
+	
+<xs:complexType name="EventCardMatchdayFootballEventType">
+	<xs:complexContent>
+		<xs:extension base="EventType">         
+			<xs:sequence> 
+				<xs:element name="matches" type="MatchesElement" minOccurs ="1" maxOccurs="1"/>
+				<xs:element name="Market" type="EventCardEventMarketSelection" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="EventName" type="xs:string" use="required" />
+			<xs:attribute name="IsLeague" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="LeagueName" type="xs:string" use="optional" />
+			<xs:attribute name="LeagueMatchdayID" type="xs:nonNegativeInteger" use="optional" />
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ResultMatchdayFootballEventType">
+	<xs:complexContent>
+		<xs:extension base="GeneralEventType">
+			<xs:sequence>
+				<xs:element name="Market" type="MarketResult" maxOccurs="unbounded"/> 
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+<!-- Additional schema identifiers covering Soccer 3 variants- but no content changes yet. -->
+<xs:complexType name="EventCardSoccer3MatchdayEventType">
+	<xs:complexContent>	
+		<xs:extension base="EventCardMatchdayFootballEventType"/>	  
+	</xs:complexContent>
+</xs:complexType>
+	
+<xs:complexType name="BoardPriceSoccer3MatchdayEventType">
+	<xs:complexContent>	
+		<xs:extension base="BoardPriceMatchdayFootballEventType"/>	  
+	</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ResultSoccer3MatchdayEventType">
+	<xs:complexContent>	
+		<xs:extension base="ResultMatchdayFootballEventType"/>	  
+	</xs:complexContent>
+</xs:complexType>
+</xs:schema>

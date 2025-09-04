@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Inspired Virtuals Message Spec V3.18</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Inspired Virtuals Message Spec V3.18</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="index.html" class="nav-link">Introduction</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="Messages/StandardMessages.html" class="dropdown-item">Common Message Attributes</a>
+</li>
+                                    
+<li>
+    <a href="Messages/EventCard.html" class="dropdown-item">Event Card</a>
+</li>
+                                    
+<li>
+    <a href="Messages/NMB.html" class="dropdown-item">No More Bets</a>
+</li>
+                                    
+<li>
+    <a href="Messages/Result.html" class="dropdown-item">Result</a>
+</li>
+                                    
+<li>
+    <a href="Messages/Void.html" class="dropdown-item">Void</a>
+</li>
+                                    
+<li>
+    <a href="Messages/LeagueUpdate.html" class="dropdown-item">League Update</a>
+</li>
+                                    
+<li>
+    <a href="Messages/GoalTimings.html" class="dropdown-item">Goal Timings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Event Specific Message Details <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="Events/AmericanFootball.html" class="dropdown-item">American Football</a>
+</li>
+                                    
+<li>
+    <a href="Events/AmericanFootball2.html" class="dropdown-item">American Football 2</a>
+</li>
+                                    
+<li>
+    <a href="Events/Baseball.html" class="dropdown-item">Baseball</a>
+</li>
+                                    
+<li>
+    <a href="Events/Basketball.html" class="dropdown-item">Basketball</a>
+</li>
+                                    
+<li>
+    <a href="Events/CounterStrike.html" class="dropdown-item">CounterStrike</a>
+</li>
+                                    
+<li>
+    <a href="Events/Cricket.html" class="dropdown-item">Cricket</a>
+</li>
+                                    
+<li>
+    <a href="Events/Darts.html" class="dropdown-item">Darts</a>
+</li>
+                                    
+<li>
+    <a href="Events/IceHockey.html" class="dropdown-item">Ice Hockey</a>
+</li>
+                                    
+<li>
+    <a href="Events/Matchday.html" class="dropdown-item">Matchday</a>
+</li>
+                                    
+<li>
+    <a href="Events/Numbers.html" class="dropdown-item">Numbers</a>
+</li>
+                                    
+<li>
+    <a href="Events/PenaltyShootout.html" class="dropdown-item">Penalty Shootout</a>
+</li>
+                                    
+<li>
+    <a href="Events/Races.html" class="dropdown-item">Races</a>
+</li>
+                                    
+<li>
+    <a href="Events/Soccer.html" class="dropdown-item">Soccer</a>
+</li>
+                                    
+<li>
+    <a href="Events/Tennis.html" class="dropdown-item">Tennis</a>
+</li>
+                                    
+<li>
+    <a href="Events/TieBreakTennis.html" class="dropdown-item">Tie Break Tennis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="BMS/BMS.html" class="nav-link">BMS</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="Messages/StandardMessages.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#message-types" class="nav-link">Message Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#communication-protocols" class="nav-link">Communication Protocols</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction">Introduction</h1>
+<h2 id="overview">Overview</h2>
+<p>This document describes the Virtual events message exchange between the Inspired Virtual Controller application and the licensee’s back-end systems (The BMS or Bet Management System). Using this message exchange, events can be input into the client's backend systems where they can be made into betting opportunities. Events can also be closed for betting, voided and resulted. Communications are two-way, synchronous and always initiated by the Controller. There are sample XML files that accompany this document.</p>
+<p>This document should be read alongside the sample XML and the Integration Checklist.</p>
+<h2 id="message-types">Message Types</h2>
+<p>There are 6 possible types of message sent to downstream systems these messages will require a response message being returned by the licensee’s systems.</p>
+<ul>
+<li>Event Card - contains the date/time of the event, the names and prices of the racers, etc. - sent in advance of the event, in a batch or as individual messages, as part of an overnight process.</li>
+<li>No More Bets - indicating that betting must be closed for an event - sent just before the event starts.  [Note: No ‘Off’ message is issued. No More Bets should be used to close bets in the licensee’s back-end systems as it is sent approximately 5 seconds before the ‘Off’.]</li>
+<li>Result - the result of the event and an indication that bets can be settled – normally sent just after the event finishes.</li>
+<li>Void - indicates that the event should be voided, and any bets must be reimbursed – this could be sent either if the event was removed from the schedule before it was run, or if an event failed to finish due to a hardware or similar problem.</li>
+<li>League Update – sent after the Result message when a Matchday League event has just finished playing. Provides information about the current standings of the league.</li>
+<li>Goal Timings – Optionally sent after the No More Bets message when a Matchday event is about to start. Provides timings for when each of the goals will be scored in the Matchday.</li>
+</ul>
+<h2 id="communication-protocols">Communication Protocols</h2>
+<p>Messages can be sent via HTTP/HTTPS POST. The Content-type is "text/xml".</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p> </p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.4.2
+Build Date UTC : 2025-02-18 12:39:39.456860+00:00
+-->

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>League Update - Inspired Virtuals Message Spec V3.18</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Inspired Virtuals Message Spec V3.18</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.html" class="nav-link">Introduction</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="StandardMessages.html" class="dropdown-item">Common Message Attributes</a>
+</li>
+                                    
+<li>
+    <a href="EventCard.html" class="dropdown-item">Event Card</a>
+</li>
+                                    
+<li>
+    <a href="NMB.html" class="dropdown-item">No More Bets</a>
+</li>
+                                    
+<li>
+    <a href="Result.html" class="dropdown-item">Result</a>
+</li>
+                                    
+<li>
+    <a href="Void.html" class="dropdown-item">Void</a>
+</li>
+                                    
+<li>
+    <a href="LeagueUpdate.html" class="dropdown-item active">League Update</a>
+</li>
+                                    
+<li>
+    <a href="GoalTimings.html" class="dropdown-item">Goal Timings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Event Specific Message Details <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Events/AmericanFootball.html" class="dropdown-item">American Football</a>
+</li>
+                                    
+<li>
+    <a href="../Events/AmericanFootball2.html" class="dropdown-item">American Football 2</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Baseball.html" class="dropdown-item">Baseball</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Basketball.html" class="dropdown-item">Basketball</a>
+</li>
+                                    
+<li>
+    <a href="../Events/CounterStrike.html" class="dropdown-item">CounterStrike</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Cricket.html" class="dropdown-item">Cricket</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Darts.html" class="dropdown-item">Darts</a>
+</li>
+                                    
+<li>
+    <a href="../Events/IceHockey.html" class="dropdown-item">Ice Hockey</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Matchday.html" class="dropdown-item">Matchday</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Numbers.html" class="dropdown-item">Numbers</a>
+</li>
+                                    
+<li>
+    <a href="../Events/PenaltyShootout.html" class="dropdown-item">Penalty Shootout</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Races.html" class="dropdown-item">Races</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Soccer.html" class="dropdown-item">Soccer</a>
+</li>
+                                    
+<li>
+    <a href="../Events/Tennis.html" class="dropdown-item">Tennis</a>
+</li>
+                                    
+<li>
+    <a href="../Events/TieBreakTennis.html" class="dropdown-item">Tie Break Tennis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../BMS/BMS.html" class="nav-link">BMS</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="Void.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="GoalTimings.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#league-update" class="nav-link">League Update</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="league-update">League Update</h1>
+<p>The League Update message is, optionally, sent after the Result message when a Matchday League event has just finished playing. Provides information about the current standings of the league.</p>
+<p>Each "Message" element has an "event" sub-element</p>
+<p>Each "event" element has the following attributes:</p>
+<ul>
+<li>EventId – an integer that uniquely identifies the event.</li>
+<li>EventGUID – a GUID that uniquely identifies the event.</li>
+<li>EventType - an integer that uniquely identifies the event type.</li>
+<li>EventTime - the time the event is due to start.</li>
+<li>MatchdayID - ID of the matchday</li>
+<li>LeagueName - Name of the league</li>
+<li>LeagueDay - The league day number. The first round of matches is league day 1, the second round of matches league day 2, etc.</li>
+<li>xsi:type - A name that corresponds to the XSD that this message will conform to.</li>
+</ul>
+<p>Within the event element there are a number of Team child elements. The Team element contains all of the league table information for each team, in position order, they contain the following attributes:</p>
+<ul>
+<li>Position. The position of this team in the league table.</li>
+<li>PositionVariation. The direction of movement for this team in the table after the most recent match. Values are “UP”, “DOWN” or “EQUAL”.</li>
+<li>TeamName. The name of the team at this position.</li>
+<li>MatchesPlayed. The total number of matches this team has played.</li>
+<li>MatchesWon. The total number of matches this team has won.</li>
+<li>MatchesDrawn. The total number of matches this team has drawn.</li>
+<li>MatchesLost. The total number of matches this team has lost.</li>
+<li>GoalsScored. The total number of goals scored by this team.</li>
+<li>GoalsAgainst. The total number of goals scored against this team.</li>
+<li>Points. The total number of points this team has in the league.</li>
+<li>Trend. 6 character string representing the last 6 games played, the leftmost string being the most recent "V" is a win for the team "N" is a draw, "P" is a loss and "-" is a game that hasn't happened (used when there have been less than 6 games)</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p> </p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Cricket - Inspired Virtuals Message Spec V3.18</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Inspired Virtuals Message Spec V3.18</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.html" class="nav-link">Introduction</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Messages/StandardMessages.html" class="dropdown-item">Common Message Attributes</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/EventCard.html" class="dropdown-item">Event Card</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/NMB.html" class="dropdown-item">No More Bets</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/Result.html" class="dropdown-item">Result</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/Void.html" class="dropdown-item">Void</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/LeagueUpdate.html" class="dropdown-item">League Update</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/GoalTimings.html" class="dropdown-item">Goal Timings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Event Specific Message Details <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="AmericanFootball.html" class="dropdown-item">American Football</a>
+</li>
+                                    
+<li>
+    <a href="AmericanFootball2.html" class="dropdown-item">American Football 2</a>
+</li>
+                                    
+<li>
+    <a href="Baseball.html" class="dropdown-item">Baseball</a>
+</li>
+                                    
+<li>
+    <a href="Basketball.html" class="dropdown-item">Basketball</a>
+</li>
+                                    
+<li>
+    <a href="CounterStrike.html" class="dropdown-item">CounterStrike</a>
+</li>
+                                    
+<li>
+    <a href="Cricket.html" class="dropdown-item active">Cricket</a>
+</li>
+                                    
+<li>
+    <a href="Darts.html" class="dropdown-item">Darts</a>
+</li>
+                                    
+<li>
+    <a href="IceHockey.html" class="dropdown-item">Ice Hockey</a>
+</li>
+                                    
+<li>
+    <a href="Matchday.html" class="dropdown-item">Matchday</a>
+</li>
+                                    
+<li>
+    <a href="Numbers.html" class="dropdown-item">Numbers</a>
+</li>
+                                    
+<li>
+    <a href="PenaltyShootout.html" class="dropdown-item">Penalty Shootout</a>
+</li>
+                                    
+<li>
+    <a href="Races.html" class="dropdown-item">Races</a>
+</li>
+                                    
+<li>
+    <a href="Soccer.html" class="dropdown-item">Soccer</a>
+</li>
+                                    
+<li>
+    <a href="Tennis.html" class="dropdown-item">Tennis</a>
+</li>
+                                    
+<li>
+    <a href="TieBreakTennis.html" class="dropdown-item">Tie Break Tennis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../BMS/BMS.html" class="nav-link">BMS</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="CounterStrike.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="Darts.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#cricket" class="nav-link">Cricket</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#event-codes" class="nav-link">Event codes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#additional-event-card-attributes" class="nav-link">Additional event card attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#additional-result-attributes" class="nav-link">Additional result attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#markets-and-bet-codes" class="nav-link">Markets and bet codes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="cricket">Cricket</h1>
+<h2 id="event-codes">Event codes</h2>
+<p>Cricket is event code 17</p>
+<h2 id="additional-event-card-attributes">Additional event card attributes</h2>
+<p>In the event card the following attributes are added to the event element:</p>
+<ul>
+<li>MeetingName – meeting name.</li>
+<li>Team1 - Name of the first team to bat (e.g. "South Africa").</li>
+<li>Team1ShortName - Shorter version of the first team's name (e.g. "RSA").</li>
+<li>Team2 - Name of the second team to bat (e.g. "India").</li>
+<li>Team2ShortName - Shorter version of the second team's name  (e.g. IND").</li>
+</ul>
+<h2 id="additional-result-attributes">Additional result attributes</h2>
+<p>There are no additional attributes or elements in the result message</p>
+<h2 id="markets-and-bet-codes">Markets and bet codes</h2>
+<p>The following list includes the most common markets offered, but it may not cover every available option for the event.
+Where an outcome contains "x.x" this will be replaced by a number that varies depending on the teams that are playing.</p>
+<h3 id="match-winner">Match Winner</h3>
+<p>BetCode: "120"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Team 1"</li>
+<li>"Team 2"</li>
+<li>"Tie"</li>
+</ul>
+<h3 id="total-fours-in-match">Total Fours In Match</h3>
+<p>BetCode: "121"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="total-sixes-in-match">Total Sixes In Match</h3>
+<p>BetCode: "122"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"   </li>
+</ul>
+<h3 id="total-boundaries-in-match">Total Boundaries In Match</h3>
+<p>BetCode: "123"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="both-teams-to-hit-a-four">Both Teams To Hit a Four</h3>
+<p>BetCode: "124"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Yes"</li>
+<li>"No"</li>
+</ul>
+<h3 id="both-teams-to-hit-a-six">Both Teams To Hit a Six</h3>
+<p>BetCode: "125"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Yes"</li>
+<li>"No"</li>
+</ul>
+<h3 id="total-match-runs-odd-or-even">Total Match Runs Odd or Even</h3>
+<p>BetCode: "126"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Odd"</li>
+<li>"Even"</li>
+</ul>
+<h3 id="first-team-total-runs">First Team Total Runs</h3>
+<p>BetCode: "127"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="first-team-total-runs-odd-or-even">First Team Total Runs Odd or Even</h3>
+<p>BetCode: "128"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Odd"</li>
+<li>"Even"</li>
+</ul>
+<h3 id="first-team-total-fours">First Team Total Fours</h3>
+<p>BetCode: "129"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4+"</li>
+</ul>
+<h3 id="first-team-total-sixes">First Team Total Sixes</h3>
+<p>BetCode: "130"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4+"</li>
+</ul>
+<h3 id="first-team-total-boundaries">First Team Total Boundaries</h3>
+<p>BetCode: "131"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4"</li>
+<li>"5"</li>
+<li>"6"</li>
+</ul>
+<h3 id="first-team-runs-off-first-ball-over-under-05">First Team Runs Off First Ball Over Under 0.5</h3>
+<p>BetCode: "132"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 0.5"</li>
+<li>"Over 0.5"</li>
+</ul>
+<h3 id="first-team-runs-off-first-ball-over-under-15">First Team Runs Off First Ball Over Under 1.5</h3>
+<p>BetCode: "133"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 1.5"</li>
+<li>"Over 1.5"</li>
+</ul>
+<h3 id="first-team-runs-off-first-ball-over-under-25">First Team Runs Off First Ball Over Under 2.5</h3>
+<p>BetCode: "134"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 2.5"</li>
+<li>"Over 2.5"</li>
+</ul>
+<h3 id="first-team-runs-off-first-ball-over-under-35">First Team Runs Off First Ball Over Under 3.5</h3>
+<p>BetCode: "135"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 3.5"</li>
+<li>"Over 3.5"</li>
+</ul>
+<h3 id="first-team-runs-off-first-ball">First Team Runs Off First Ball</h3>
+<p>BetCode: "136"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4"</li>
+<li>"6"</li>
+</ul>
+<h3 id="first-team-total-wickets-lost">First Team Total Wickets Lost</h3>
+<p>BetCode: "137"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3+"</li>
+</ul>
+<h3 id="first-team-wicket-lost">First Team Wicket Lost</h3>
+<p>BetCode: "138"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Yes"</li>
+<li>"No"</li>
+</ul>
+<h3 id="first-team-wicket-lost-dismissal-type">First Team Wicket Lost Dismissal Type</h3>
+<p>BetCode: "139"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Caught"</li>
+<li>"Bowled"</li>
+<li>"LBW"</li>
+<li>"No Wicket"</li>
+</ul>
+<h3 id="total-fours-under-over-15">Total Fours Under Over 1.5</h3>
+<p>BetCode: "261"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 1.5"</li>
+<li>"Over 1.5"</li>
+</ul>
+<h3 id="total-fours-under-over-25">Total Fours Under Over 2.5</h3>
+<p>BetCode: "262"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 2.5"</li>
+<li>"Over 2.5"</li>
+</ul>
+<h3 id="total-fours-under-over-35">Total Fours Under Over 3.5</h3>
+<p>BetCode: "263"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 3.5"</li>
+<li>"Over 3.5"</li>
+</ul>
+<h3 id="total-fours-under-over-45">Total Fours Under Over 4.5</h3>
+<p>BetCode: "264"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 4.5"</li>
+<li>"Over 4.5"</li>
+</ul>
+<h3 id="total-fours-under-over-55">Total Fours Under Over 5.5</h3>
+<p>BetCode: "265"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 5.5"</li>
+<li>"Over 5.5"</li>
+</ul>
+<h3 id="total-sixes-under-over-05">Total Sixes Under Over 0.5</h3>
+<p>BetCode: "266"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 0.5"</li>
+<li>"Over 0.5"</li>
+</ul>
+<h3 id="total-sixes-under-over-15">Total Sixes Under Over 1.5</h3>
+<p>BetCode: "267"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 1.5"</li>
+<li>"Over 1.5"</li>
+</ul>
+<h3 id="total-sixes-under-over-25">Total Sixes Under Over 2.5</h3>
+<p>BetCode: "268"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 2.5"</li>
+<li>"Over 2.5"</li>
+</ul>
+<h3 id="total-boundaries-under-over-25">Total Boundaries Under Over 2.5</h3>
+<p>BetCode: "269"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 2.5"</li>
+<li>"Over 2.5"</li>
+</ul>
+<h3 id="total-boundaries-under-over-35">Total Boundaries Under Over 3.5</h3>
+<p>BetCode: "270"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 3.5"</li>
+<li>"Over 3.5"</li>
+</ul>
+<h3 id="total-boundaries-under-over-45">Total Boundaries Under Over 4.5</h3>
+<p>BetCode: "271"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 4.5"</li>
+<li>"Over 4.5"</li>
+</ul>
+<h3 id="total-boundaries-under-over-55">Total Boundaries Under Over 5.5</h3>
+<p>BetCode: "272"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 5.5"</li>
+<li>"Over 5.5"</li>
+</ul>
+<h3 id="total-boundaries-under-over-65">Total Boundaries Under Over 6.5</h3>
+<p>BetCode: "273"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 6.5"</li>
+<li>"Over 6.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-85">Total First Team Total Runs Under Over 8.5</h3>
+<p>BetCode: "274"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 8.5"</li>
+<li>"Over 8.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-95">Total First Team Total Runs Under Over 9.5</h3>
+<p>BetCode: "275"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 9.5"</li>
+<li>"Over 9.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-105">Total First Team Total Runs Under Over 10.5</h3>
+<p>BetCode: "276"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 10.5"</li>
+<li>"Over 10.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-115">Total First Team Total Runs Under Over 11.5</h3>
+<p>BetCode: "277"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 11.5"</li>
+<li>"Over 11.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-125">Total First Team Total Runs Under Over 12.5</h3>
+<p>BetCode: "278"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 12.5"</li>
+<li>"Over 12.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-135">Total First Team Total Runs Under Over 13.5</h3>
+<p>BetCode: "279"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 13.5"</li>
+<li>"Over 13.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-145">Total First Team Total Runs Under Over 14.5</h3>
+<p>BetCode: "280"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 14.5"</li>
+<li>"Over 14.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-155">Total First Team Total Runs Under Over 15.5</h3>
+<p>BetCode: "281"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 15.5"</li>
+<li>"Over 15.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-165">Total First Team Total Runs Under Over 16.5</h3>
+<p>BetCode: "282"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 16.5"</li>
+<li>"Over 16.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-175">Total First Team Total Runs Under Over 17.5</h3>
+<p>BetCode: "283"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 17.5"</li>
+<li>"Over 17.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-185">Total First Team Total Runs Under Over 18.5</h3>
+<p>BetCode: "284"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 18.5"</li>
+<li>"Over 18.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-195">Total First Team Total Runs Under Over 19.5</h3>
+<p>BetCode: "285"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 19.5"</li>
+<li>"Over 19.5"</li>
+</ul>
+<h3 id="total-first-team-total-runs-under-over-205">Total First Team Total Runs Under Over 20.5</h3>
+<p>BetCode: "286"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 20.5"</li>
+<li>"Over 20.5"</li>
+</ul>
+<h3 id="total-boundaries-in-match-exact">Total Boundaries In Match Exact</h3>
+<p>BetCode: "287"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4"</li>
+<li>"5"</li>
+<li>"6"</li>
+<li>"7"</li>
+<li>"8"</li>
+<li>"9"</li>
+</ul>
+<h3 id="total-boundaries-in-match-exact-reduced">Total Boundaries In Match Exact Reduced</h3>
+<p>BetCode: "288"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4"</li>
+<li>"5"</li>
+<li>"6"</li>
+<li>"7+"</li>
+</ul>
+<h3 id="total-wickets-in-match-exact">Total Wickets In Match Exact</h3>
+<p>BetCode: "289"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3"</li>
+<li>"4"</li>
+<li>"5+"</li>
+</ul>
+<h3 id="total-wickets-in-match-exact-reduced">Total Wickets In Match Exact Reduced</h3>
+<p>BetCode: "290"</p>
+<p>Outcomes:</p>
+<ul>
+<li>"0"</li>
+<li>"1"</li>
+<li>"2"</li>
+<li>"3+"</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p> </p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

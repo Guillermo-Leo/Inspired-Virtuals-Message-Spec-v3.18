@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>American Football 2 - Inspired Virtuals Message Spec V3.18</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Inspired Virtuals Message Spec V3.18</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.html" class="nav-link">Introduction</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Messages/StandardMessages.html" class="dropdown-item">Common Message Attributes</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/EventCard.html" class="dropdown-item">Event Card</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/NMB.html" class="dropdown-item">No More Bets</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/Result.html" class="dropdown-item">Result</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/Void.html" class="dropdown-item">Void</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/LeagueUpdate.html" class="dropdown-item">League Update</a>
+</li>
+                                    
+<li>
+    <a href="../Messages/GoalTimings.html" class="dropdown-item">Goal Timings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Event Specific Message Details <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="AmericanFootball.html" class="dropdown-item">American Football</a>
+</li>
+                                    
+<li>
+    <a href="AmericanFootball2.html" class="dropdown-item active">American Football 2</a>
+</li>
+                                    
+<li>
+    <a href="Baseball.html" class="dropdown-item">Baseball</a>
+</li>
+                                    
+<li>
+    <a href="Basketball.html" class="dropdown-item">Basketball</a>
+</li>
+                                    
+<li>
+    <a href="CounterStrike.html" class="dropdown-item">CounterStrike</a>
+</li>
+                                    
+<li>
+    <a href="Cricket.html" class="dropdown-item">Cricket</a>
+</li>
+                                    
+<li>
+    <a href="Darts.html" class="dropdown-item">Darts</a>
+</li>
+                                    
+<li>
+    <a href="IceHockey.html" class="dropdown-item">Ice Hockey</a>
+</li>
+                                    
+<li>
+    <a href="Matchday.html" class="dropdown-item">Matchday</a>
+</li>
+                                    
+<li>
+    <a href="Numbers.html" class="dropdown-item">Numbers</a>
+</li>
+                                    
+<li>
+    <a href="PenaltyShootout.html" class="dropdown-item">Penalty Shootout</a>
+</li>
+                                    
+<li>
+    <a href="Races.html" class="dropdown-item">Races</a>
+</li>
+                                    
+<li>
+    <a href="Soccer.html" class="dropdown-item">Soccer</a>
+</li>
+                                    
+<li>
+    <a href="Tennis.html" class="dropdown-item">Tennis</a>
+</li>
+                                    
+<li>
+    <a href="TieBreakTennis.html" class="dropdown-item">Tie Break Tennis</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../BMS/BMS.html" class="nav-link">BMS</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="AmericanFootball.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="Baseball.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#american-football-2" class="nav-link">American Football 2</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#event-codes" class="nav-link">Event codes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#additional-event-card-attributes" class="nav-link">Additional event card attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#additional-result-attributes" class="nav-link">Additional result attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#markets-and-bet-codes" class="nav-link">Markets and bet codes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#partial-markets-and-bet-codes" class="nav-link">Partial Markets and bet codes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="american-football-2">American Football 2</h1>
+<h2 id="event-codes">Event codes</h2>
+<p>American Football 2 is event code 81 (NFL2) or 82 (Head 2 Head 2)</p>
+<h2 id="additional-event-card-attributes">Additional event card attributes</h2>
+<p>In the event card the following attributes are added to the event element </p>
+<ul>
+<li>MeetingName - name of venue (e.g. Edgeley Arena).</li>
+<li>HomeTeam - name of the home team (e.g. Bobcats).</li>
+<li>AwayTeam - name of the away team (e.g. Comets).</li>
+<li>Details – details of the event in a string which can be displayed (e.g. “Bobcats vs Comets”).</li>
+<li>HomeUsesAlternateKit – 0 if the home team will play in their standard kit, 1 if they play in their alternate kit.</li>
+<li>AwayUsesAlternateKit – 0 if the away team will play in their standard kit, 1 if they play in their alternate kit.</li>
+</ul>
+<h2 id="additional-result-attributes">Additional result attributes</h2>
+<p>Under normal behaviour, the event element provides an additional "Result" child-element that contains the follow attributes:</p>
+<ul>
+<li>Home - Score of the home team</li>
+<li>Away - Score of the away team</li>
+</ul>
+<h2 id="markets-and-bet-codes">Markets and bet codes</h2>
+<p>The following list includes the most common markets offered, but it may not cover every available option for the event.
+Where an outcome contains "x.x" or "y.y" this will be replaced by a number that varies depending on the teams that are playing.</p>
+<h3 id="spread">Spread</h3>
+<p>Betcode: 192</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="total-points-overunder">Total Points Over/Under</h3>
+<p>Betcode: 193</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="money-line">Money Line</h3>
+<p>Betcode: 194</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home"</li>
+<li>"Away"</li>
+</ul>
+<h3 id="winning-margin">Winning Margin</h3>
+<p>Betcode: 195</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home 1-6"</li>
+<li>"Home 7-12"</li>
+<li>"Home 13-18"</li>
+<li>"Home 19-24"</li>
+<li>"Home 25-30"</li>
+<li>"Home 31+"</li>
+<li>"Away 1-6"</li>
+<li>"Away 7-12"</li>
+<li>"Away 13-18"</li>
+<li>"Away 19-24"</li>
+<li>"Away 25-30"</li>
+<li>"Away 31+"</li>
+</ul>
+<h3 id="total-points-groups">Total Points Groups</h3>
+<p>Betcode: 196</p>
+<p>Outcomes:</p>
+<ul>
+<li>"25 And Under"</li>
+<li>"26-30"</li>
+<li>"31-35"</li>
+<li>"36-40"</li>
+<li>"41-45"</li>
+<li>"46-50"</li>
+<li>"51-55"</li>
+<li>"56-60"</li>
+<li>"61 And Over"</li>
+</ul>
+<h3 id="spread-and-total-points-overunder">Spread and Total Points Over/Under</h3>
+<p>Betcode: 197</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home + x.x and Under y.y"</li>
+<li>"Home + x.x and Over y.y"</li>
+<li>"Away - x.x and Under y.y"</li>
+<li>"Away - x.x and Over y.y"</li>
+</ul>
+<h3 id="money-line-and-total-points-overunder">Money Line and Total Points Over/Under</h3>
+<p>Betcode: 198</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home and Under x.x "</li>
+<li>"Home and Over x.x "</li>
+<li>"Away and Under x.x "</li>
+<li>"Away and Over x.x"</li>
+</ul>
+<h3 id="first-score-in-play">First Score in Play</h3>
+<p>Betcode: 325</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home Touchdown"</li>
+<li>"Away Touchdown"</li>
+<li>"Home Field Goal"</li>
+<li>"Away Field Goal"</li>
+</ul>
+<h3 id="additional-spread-line-plus-1">Additional Spread Line Plus 1</h3>
+<p>Betcode: 326</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-plus-2">Additional Spread Line Plus 2</h3>
+<p>Betcode: 327</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-plus-3">Additional Spread Line Plus 3</h3>
+<p>Betcode: 328</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-plus-4">Additional Spread Line Plus 4</h3>
+<p>Betcode: 329</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-minus-1">Additional Spread Line Minus 1</h3>
+<p>Betcode: 330</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-minus-2">Additional Spread Line Minus 2</h3>
+<p>Betcode: 331</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-minus-3">Additional Spread Line Minus 3</h3>
+<p>Betcode: 332</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-spread-line-minus-4">Additional Spread Line Minus 4</h3>
+<p>Betcode: 333</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home +x.x"</li>
+<li>"Away -x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-plus-1">Additional Total Points OU Line Plus 1</h3>
+<p>Betcode: 334</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-plus-2">Additional Total Points OU Line Plus 2</h3>
+<p>Betcode: 335</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-plus-3">Additional Total Points OU Line Plus 3</h3>
+<p>Betcode: 336</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-plus-4">Additional Total Points OU Line Plus 4</h3>
+<p>Betcode: 337</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-minus-1">Additional Total Points OU Line Minus 1</h3>
+<p>Betcode: 338</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-minus-2">Additional Total Points OU Line Minus 2</h3>
+<p>Betcode: 339</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-minus-3">Additional Total Points OU Line Minus 3</h3>
+<p>Betcode: 340</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="additional-total-points-ou-line-minus-4">Additional Total Points OU Line Minus 4</h3>
+<p>Betcode: 341</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under x.x"</li>
+<li>"Over x.x"</li>
+</ul>
+<h3 id="first-team-to-score">First Team To Score</h3>
+<p>Betcode: 342</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home Scores First"</li>
+<li>"Away Score First"</li>
+</ul>
+<h3 id="home-team-total-points-over-under-165">Home Team Total Points Over Under 16.5</h3>
+<p>Betcode: 343</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 16.5"</li>
+<li>"Over 16.5"</li>
+</ul>
+<h3 id="home-team-total-points-over-under-195">Home Team Total Points Over Under 19.5</h3>
+<p>Betcode: 344</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 19.5"</li>
+<li>"Over 19.5"</li>
+</ul>
+<h3 id="home-team-total-points-over-under-205">Home Team Total Points Over Under 20.5</h3>
+<p>Betcode: 345</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 20.5"</li>
+<li>"Over 20.5"</li>
+</ul>
+<h3 id="home-team-total-points-over-under-235">Home Team Total Points Over Under 23.5</h3>
+<p>Betcode: 346</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 23.5"</li>
+<li>"Over 23.5"</li>
+</ul>
+<h3 id="home-team-total-points-over-under-275">Home Team Total Points Over Under 27.5</h3>
+<p>Betcode: 347</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 27.5"</li>
+<li>"Over 27.5"</li>
+</ul>
+<h3 id="away-team-total-points-over-under-165">Away Team Total Points Over Under 16.5</h3>
+<p>Betcode: 348</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 16.5"</li>
+<li>"Over 16.5"</li>
+</ul>
+<h3 id="away-team-total-points-over-under-195">Away Team Total Points Over Under 19.5</h3>
+<p>Betcode: 349</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 19.5"</li>
+<li>"Over 19.5"</li>
+</ul>
+<h3 id="away-team-total-points-over-under-205">Away Team Total Points Over Under 20.5</h3>
+<p>Betcode: 350</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 20.5"</li>
+<li>"Over 20.5"</li>
+</ul>
+<h3 id="away-team-total-points-over-under-235">Away Team Total Points Over Under 23.5</h3>
+<p>Betcode: 351</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 23.5"</li>
+<li>"Over 23.5"</li>
+</ul>
+<h3 id="away-team-total-points-over-under-275">Away Team Total Points Over Under 27.5</h3>
+<p>Betcode: 352</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Under 27.5"</li>
+<li>"Over 27.5"</li>
+</ul>
+<h3 id="both-teams-to-score-10-or-more">Both Teams To Score 10 Or More</h3>
+<p>Betcode: 353</p>
+<p>Outcomes:</p>
+<ul>
+<li>"BTTS10+ Points Yes"</li>
+<li>"BTTS10+ Points No"</li>
+</ul>
+<h3 id="both-teams-to-score-15-or-more">Both Teams To Score 15 Or More</h3>
+<p>Betcode: 354</p>
+<p>Outcomes:</p>
+<ul>
+<li>"BTTS15+ Points Yes"</li>
+<li>"BTTS15+ Points No"</li>
+</ul>
+<h3 id="both-teams-to-score-20-or-more">Both Teams To Score 20 Or More</h3>
+<p>Betcode: 355</p>
+<p>Outcomes:</p>
+<ul>
+<li>"BTTS20+ Points Yes"</li>
+<li>"BTTS20+ Points No"</li>
+</ul>
+<h3 id="first-team-to-score-spread-total">First Team to Score, Spread &amp; Total</h3>
+<p>Betcode: 357</p>
+<p>Outcomes:</p>
+<ul>
+<li>"Home Scores first, Home -x.x and Under y.y"</li>
+<li>"Home Scores first, Home -x.x and Over y.y"</li>
+<li>"Home Scores first, Away +x.x and Under y.y"</li>
+<li>"Home Scores first, Away +x.x and Over y.y"</li>
+<li>"Away Scores first, Home -x.x and Under y.y"</li>
+<li>"Away Scores first, Home -x.x and Over y.y"</li>
+<li>"Away Scores first, Away +x.x and Under y.y"</li>
+<li>"Away Scores first, Away +x.x and Over y.y"</li>
+</ul>
+<h2 id="partial-markets-and-bet-codes">Partial Markets and bet codes</h2>
+<p>Where an outcome contains "x.x" or "y.y" this will be replaced by a number that varies depending on the teams that are playing.
+Where an outcome contains "H.A" this will be replaced by "Home" or "Away" depending on the teams that are playing.
+Where an outcome contains "x-x" or "y-y" this will be replaced by two numbers expressing the inclusive limits of the groups eg "1-6". The values will depend on the teams that are playing.</p>
+<h3 id="acca-fav-most-likely-winning-margin-and-most-likely-total-points-group">"ACCA Fav most likely winning margin and Most likely total points group</h3>
+<p>Betcode: 358</p>
+<p>Outcomes:</p>
+<ul>
+<li>"H.A margin x-x and Total points y-y"</li>
+</ul>
+<h3 id="acca-underdog-most-likely-winning-margin-and-2nd-likeliest-total-points-group">"ACCA Underdog most likely winning margin and 2nd likeliest total points group</h3>
+<p>Betcode: 359</p>
+<p>Outcomes:</p>
+<ul>
+<li>"H.A margin x-x and Total points y-y"</li>
+</ul>
+<h3 id="acca-fav-score-td-first-2nd-likeliest-win-margin-and-total-points-over">ACCA Fav Score TD first, 2nd likeliest win margin and total points over</h3>
+<p>Betcode: 360</p>
+<p>Outcomes:</p>
+<ul>
+<li>"H.A TD First win margin x-x and Over y.y"</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p> </p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

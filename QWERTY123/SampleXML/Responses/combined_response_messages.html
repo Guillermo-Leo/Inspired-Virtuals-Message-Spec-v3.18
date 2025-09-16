@@ -1,0 +1,24 @@
+<message
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="ResponseMessageGeneral"
+        MessageType="EventCard_Response"
+        ControllerId="1"
+        TransactionId="123"
+        MessageDateTime="2021-04-24T14:21:56+01:00"
+        MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventAckEventCard"
+           Status="ACK"
+           Details="Further information regarding the reason for this response or actions which have been taken at your end" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageRetryError" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventNackRetryError" Status="NACK" Details="Further information regarding the reason for this response" Action="error" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageRetryError" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventNackRetryError" Status="NACK" Details="Further information regarding the reason for this response" Action="retry" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageGeneral" MessageType="NoMoreBets_Response" ControllerId="1" TransactionId="123" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventAckGeneral" EventId="142" EventGUID="6631FCBB-57B7-4022-9C19-5A31597D29B0" EventType="1" EventTime="2021-04-24T15:05:00+01:00" Status="ACK" Details="Further information regarding the reason for this response or actions which have been taken at your end" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageGeneral" MessageType="NoMoreBets_Response" ControllerId="1" TransactionId="123" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventNackVoid" EventId="142" EventGUID="6631FCBB-57B7-4022-9C19-5A31597D29B0" EventType="1" EventTime="2021-04-24T15:05:00+01:00" Status="NACK" Details="Further information regarding the reason for this response" Action="void" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageGeneral" MessageType="Result_Response" ControllerId="1" TransactionId="123" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventAckGeneral" EventId="142" EventGUID="6631FCBB-57B7-4022-9C19-5A31597D29B0" EventType="1" EventTime="2021-04-24T15:05:00+01:00" Status="ACK" Details="Further information regarding the reason for this response or actions which have been taken at your end" />
+</message><message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ResponseMessageGeneral" MessageType="Void_Response" ControllerId="1" TransactionId="123" MessageDateTime="2021-04-24T14:21:56+01:00" MessageFormatVersion="1.0">
+	<event xsi:type="ResponseEventAckGeneral" EventId="142" EventGUID="6631FCBB-57B7-4022-9C19-5A31597D29B0" EventType="1" EventTime="2021-04-24T15:05:00+01:00" Status="ACK" Details="Further information regarding the reason for this response or actions which have been taken at your end" />
+</message>
